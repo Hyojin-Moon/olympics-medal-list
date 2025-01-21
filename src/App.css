@@ -2,20 +2,26 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: Arial, sans-serif;
 }
 
 /* 전체 메인 컨테이너 */
 .main-container{
+  max-width: 1200px;
+  margin: 20px auto;
   width: 100%;
   padding: 20px;
-  font-family: Arial, sans-serif;
-  border: 1px solid black;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+
 /* 네브바(제목) */
 .navbar{
   color: rgb(28, 0, 189);
   padding: 15px 20px;
   text-align: center;
+  font-size: 24px;
 }
 
 /* 인풋값 섹션*/
@@ -31,27 +37,41 @@
 }
 .input-group p {
   margin-bottom: 5px;
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
 }
 .input-group input {
   padding: 8px;
   font-size: 14px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
 }
-.input-group p {
-  margin-bottom: 5px;
-  font-size: 16px;
+.input-group input:focus {
+  border-color: rgb(78, 78, 78);
 }
-
 
 /* 버튼섹션 */
 .button-section{
   display: flex;
+  justify-content: center;
   gap: 10px;
   margin-top: 20px;
 }
 #addbtn,#updatebtn{
-  width: 100px;
+  width: 120px;
+  padding: 10px;
   font-size: 14px;
   cursor: pointer;
   background-color: rgb(238, 203, 47);
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  transition: box-shadow 0.3s ease;
+}
+#addbtn:hover,
+#updatebtn:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 버튼에 그림자 */
 }

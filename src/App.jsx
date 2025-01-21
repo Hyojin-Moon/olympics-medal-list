@@ -29,7 +29,6 @@ function App() {
             <input type="text" id="bronze" />
           </div>
 
-
           <div className='button-section'>
             <input type="button" id='addbtn' value="국가 추가" />
             <input type="button" id='updatebtn' value="업데이트" />
@@ -37,9 +36,9 @@ function App() {
 
         </div>
 
+        <h3>*입력된 값이 들어올 구역*</h3>
+
       </div>
-
-
     </>
   )
 }
