@@ -4,12 +4,32 @@ import './App.css'
 function App() {
 
   // 기본 상태를 관리할 useState 훅을 사용해 초기 상태를 설정
-  const [data, setData] = useState('');
-  const handleInputChange = () => {
-  }
-  //onSubmit 이벤트 핸들러를 설정
-  const handleSubmit = () => {
+  const [data, setData] = useState({
+    nation: '',
+    gold: '',
+    silver: '',
+    bronze: '',
+  });
+  console.log(data)
 
+  const handleInputChange = (e) => {
+    const {id, value} = e.target;
+    //메달 input은 0이상의 숫자만 허용
+    if ((id === 'gold' || id === 'silver' || id === 'bronze') && (isNaN(value) || value < 0)) {
+      return;
+    }
+    setData({...data, [id]:value});
+  }
+
+  //onSubmit 이벤트 핸들러를 설정
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setData({
+      nation: '',
+      gold: '',
+      silver: '',
+      bronze: '',
+    });
   }
 
   return (
@@ -23,19 +43,19 @@ function App() {
 
           <div className="input-group">
             <p>국가명</p>
-            <input type="text" id="nation" placeholder="국가 입력" onChange={handleInputChange} />
+            <input type="text" id="nation" placeholder="국가 입력" onChange={handleInputChange} value={data.nation}/>
           </div>
           <div className="input-group" >
             <p>금메달</p>
-            <input type="text" id="gold" onChange={handleInputChange} />
+            <input type="text" id="gold" onChange={handleInputChange} value={data.gold}/>
           </div>
           <div className="input-group">
             <p>은메달</p>
-            <input type="text" id="silver" onChange={handleInputChange} />
+            <input type="text" id="silver" onChange={handleInputChange} value={data.silver}/>
           </div>
           <div className="input-group">
             <p>동메달</p>
-            <input type="text" id="bronze" onChange={handleInputChange} />
+            <input type="text" id="bronze" onChange={handleInputChange} value={data.bronze}/>
           </div>
 
           <div className='button-section'>
@@ -44,8 +64,7 @@ function App() {
           </div>
 
         </form>
-
-        <h3>*입력된 값이 들어올 구역*</h3>
+        
 
       </div>
     </>
