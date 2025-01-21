@@ -10,7 +10,8 @@ function App() {
     silver: '',
     bronze: '',
   });
-  console.log(data)
+  const [nations, setNations] = useState([]); //map사용을 위해 배열로 초기값 지정
+
 
   const handleInputChange = (e) => {
     const {id, value} = e.target;
@@ -18,12 +19,16 @@ function App() {
     if ((id === 'gold' || id === 'silver' || id === 'bronze') && (isNaN(value) || value < 0)) {
       return;
     }
-    setData({...data, [id]:value});
+    // 계산된 속성 이름 (Computed Property Name) id 변수의 키값을 동적으로 가져옴
+    setData({...data, [id]:value}); 
   }
 
-  //onSubmit 이벤트 핸들러를 설정
+  //onClick 이벤트 핸들러를 설정
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    setNations([...nations, data]) //추가될 리스트
+
     setData({
       nation: '',
       gold: '',
@@ -39,7 +44,7 @@ function App() {
           <h1>2025 Olympics</h1>
         </nav>
 
-        <form className='input-section' onSubmit={handleSubmit}> {/*onSubmit 사용 form으로*/}
+        <form className='input-section' > 
 
           <div className="input-group">
             <p>국가명</p>
@@ -59,12 +64,22 @@ function App() {
           </div>
 
           <div className='button-section'>
-            <input type='submit' id='addbtn' value="국가 추가" />
+            <input type='submit' id='addbtn' value="국가 추가" onClick={handleSubmit}/>
             <input type="submit" id='updatebtn' value="업데이트" />
           </div>
 
         </form>
-        
+         {/* 국가리스트 */}
+        <div className='nations-list'>
+          {nations.map((nation, index) => (
+            <div key={index} className='nations-item'>
+              <p>국가명: {nation.nation}</p>
+              <p>금메달: {nation.gold}</p>
+              <p>은메달: {nation.silver}</p>
+              <p>동메달: {nation.bronze}</p>
+            </div>
+          ))}
+        </div>
 
       </div>
     </>
