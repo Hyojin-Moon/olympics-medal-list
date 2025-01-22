@@ -96,6 +96,18 @@ function MedalForm()  {
         <nav className='navbar'>
           <h1>2025 Olympics</h1>
         </nav>
+        
+        {/* 정렬 기준 섹션 */}
+        <div className='sortoption'>
+            <label>
+              <input type="radio" value="gold" />
+              금메달 기준 정렬
+            </label>
+            <label>
+              <input type="radio" value="toal" />
+              총 메달 기준 정렬
+            </label>
+          </div>
 
         <form className='input-section'>
           {/* 입력 섹션 */}
@@ -115,6 +127,9 @@ function MedalForm()  {
             <p>동메달</p>
             <input type="number" id="bronze" onChange={handleInputChange} value={data.bronze} />
           </div>
+
+          
+
           {/* 버튼 섹션 */}
           <div className='button-section'>
             <input type='submit' id='addbtn' value="국가 추가" onClick={handleSubmit}/>
