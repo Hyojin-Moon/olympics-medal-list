@@ -29,7 +29,7 @@ function MedalForm()  {
     setData({ ...data, [id]: value });
   }
 
-  // ** 국가추가 핸들러를 설정 **
+  // ** 국가추가 핸들러 **
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -44,9 +44,32 @@ function MedalForm()  {
     });
   }
 
-  // ** 업데이트 **
+  // ** 업데이트 핸들러**  nations 배열을 활용
+  const handleUpdate = (e) => {
+    e.preventDefault();
 
-  // ** 삭제 **
+    const updatedNations = nations.map((item) => {
+      if(item.nation === data.nation) {
+        return {
+          nation: data.nation,
+          gold: data.gold,
+          silver: data.silver,
+          bronze: data.bronze,
+        };
+      }
+      alert("수정할 국가가 없습니다");
+      return item;
+    })
+    setNations(updatedNations);
+
+    //초기화
+    setData({
+      nation: '',
+      gold: '',
+      silver: '',
+      bronze: '',
+    });
+  }
 
   return (
     <>
@@ -55,7 +78,7 @@ function MedalForm()  {
           <h1>2025 Olympics</h1>
         </nav>
 
-        <form className='input-section' onSubmit={handleSubmit} >
+        <form className='input-section'>
           {/* 입력 섹션 */}
           <div className="input-group">
             <p>국가명</p>
@@ -75,8 +98,8 @@ function MedalForm()  {
           </div>
           {/* 버튼 섹션 */}
           <div className='button-section'>
-            <input type='submit' id='addbtn' value="국가 추가" />
-            <input type="submit" id='updatebtn' value="업데이트" />
+            <input type='submit' id='addbtn' value="국가 추가" onClick={handleSubmit}/>
+            <input type="submit" id='updatebtn' value="업데이트" onClick={handleUpdate}/>
           </div>
         </form>
         <MedalList nations={nations} />

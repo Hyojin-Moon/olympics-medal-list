@@ -2,6 +2,12 @@
 import "../../App.css";
 
 function MedalList({nations}) {
+
+  // ** 삭제 핸들러 **
+  const handleDelete = () => {
+    
+  }
+
   return (
     <div>
       {/* 국가리스트 추가 */}
@@ -23,7 +29,7 @@ function MedalList({nations}) {
                   <p>{nation.gold}</p>
                   <p>{nation.silver}</p>
                   <p>{nation.bronze}</p>
-                  <button id='deletebtn'>삭제</button>
+                  <button id='deletebtn' onClick={handleDelete}>삭제</button>
                 </div>
               ))}
             </>
