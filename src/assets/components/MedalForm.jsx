@@ -33,7 +33,10 @@ function MedalForm()  {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    setNations([...nations, data]); //상태 업데이트
+    const sortedNations = [...nations, data].sort((a, b) => { // 금메달 기준 정렬
+      return b.gold - a.gold;
+    });
+    setNations(sortedNations);
 
     //초기화
     setData({
