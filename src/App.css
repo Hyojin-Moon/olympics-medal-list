@@ -63,7 +63,7 @@
 
 .nations-header {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   background-color: rgb(28, 0, 189);
   color: white;
   padding: 10px 15px;
@@ -79,7 +79,7 @@
 
 .nations-item {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   padding: 10px 15px;
   border-top: 1px solid #ddd;
   text-align: center;
@@ -88,7 +88,10 @@
 .nations-item p{
   margin: auto;
 }
-
+#totalmedal{
+  font-weight: bold;
+  color: crimson;
+}
 #deletebtn{
   width: 60px;
   height: 40px;
@@ -96,9 +99,14 @@
   background-color: red;
   border-radius: 5px;
   border: 1px solid #ddd;
-  
+  font-weight: bold;
+  font-size: 13px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
 }
-
+#deletebtn:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
 /* 버튼섹션 */
 .button-section{

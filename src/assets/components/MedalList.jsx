@@ -25,6 +25,7 @@ function MedalList({nations, setNations}) {
                 <p>금메달</p>
                 <p>은메달</p>
                 <p>동메달</p>
+                <p>총합계</p>
                 <p>액션</p>
               </div>
               {/* 리스트 */}
@@ -34,6 +35,7 @@ function MedalList({nations, setNations}) {
                   <p>{nation.gold}</p>
                   <p>{nation.silver}</p>
                   <p>{nation.bronze}</p>
+                  <p id="totalmedal">{nation.gold + nation.silver + nation.bronze}</p>
                   <button id='deletebtn' onClick={() => handleDelete(index)}>삭제</button>
                 </div>
               ))}

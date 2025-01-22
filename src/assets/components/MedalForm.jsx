@@ -159,8 +159,6 @@ function MedalForm()  {
             <input type="number" id="bronze" onChange={handleInputChange} value={data.bronze} />
           </div>
 
-          
-
           {/* 버튼 섹션 */}
           <div className='button-section'>
             <input type='submit' id='addbtn' value="국가 추가" onClick={handleSubmit}/>
