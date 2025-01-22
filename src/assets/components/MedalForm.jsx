@@ -8,15 +8,15 @@ function MedalForm()  {
    // ** 기본 상태 관리 **
   const [data, setData] = useState({
     nation: '',
-    gold: '',
-    silver: '',
-    bronze: '',
+    gold: 0,
+    silver: 0,
+    bronze: 0,
   });
-
   // ** 국가리스트 상태 관리 **
   const [nations, setNations] = useState([]);
   
   
+
   // ** 입력값 설정 **
   const handleInputChange = (e) => {
 
@@ -25,15 +25,25 @@ function MedalForm()  {
     if ((id === 'gold' || id === 'silver' || id === 'bronze') && (isNaN(value) || value < 0)) {
       return;
     }
+    
     // 계산된 속성 이름 (Computed Property Name) id 변수의 키값을 동적으로 가져옴
     setData({ ...data, [id]: value });
   }
+
+
 
   // ** 국가추가 핸들러 **
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const sortedNations = [...nations, data].sort((a, b) => { // 금메달 기준 정렬
+    // 중복 체크
+    if(nations.some((e) => e.nation === data.nation)) {
+      alert ("이미 입력된 국가 입니다.");
+      return;
+    }
+
+    // 정렬
+    const sortedNations = [...nations, data].sort((a, b) => { 
       return b.gold - a.gold;
     });
     setNations(sortedNations);
@@ -41,15 +51,22 @@ function MedalForm()  {
     //초기화
     setData({
       nation: '',
-      gold: '',
-      silver: '',
-      bronze: '',
+      gold: 0,
+      silver: 0,
+      bronze: 0,
     });
   }
+
 
   // ** 업데이트 핸들러**  nations 배열을 활용
   const handleUpdate = (e) => {
     e.preventDefault();
+
+    // 중복 체크
+    if(!nations.some((e) => e.nation === data.nation)) {
+      alert ("업데이트 할 국가가 없습니다.");
+      return;
+    }
 
     const updatedNations = nations.map((item) => {
       if(item.nation === data.nation) {
@@ -88,15 +105,15 @@ function MedalForm()  {
           </div>
           <div className="input-group" >
             <p>금메달</p>
-            <input type="text" id="gold" onChange={handleInputChange} value={data.gold} />
+            <input type="number" id="gold" onChange={handleInputChange} value={data.gold} />
           </div>
           <div className="input-group">
             <p>은메달</p>
-            <input type="text" id="silver" onChange={handleInputChange} value={data.silver} />
+            <input type="number" id="silver" onChange={handleInputChange} value={data.silver} />
           </div>
           <div className="input-group">
             <p>동메달</p>
-            <input type="text" id="bronze" onChange={handleInputChange} value={data.bronze} />
+            <input type="number" id="bronze" onChange={handleInputChange} value={data.bronze} />
           </div>
           {/* 버튼 섹션 */}
           <div className='button-section'>
