@@ -5,22 +5,24 @@ import MedalList from './MedalList';
 
 function MedalForm()  {
 
-  // ** 로컬 스토리지 초기값 **
+// ** 로컬 스토리지 초기값 **
   const savedData = JSON.parse(localStorage.getItem('nations')) || [];
 
-  // ** 기본 상태 관리 **
+// ** 기본 상태 관리 **
   const [data, setData] = useState({
     nation: '',
     gold: 0,
     silver: 0,
     bronze: 0,
   });
-  // ** 국가리스트 상태 관리 **
+// ** 국가리스트 상태 관리 **
   const [nations, setNations] = useState(savedData);
-  const [sortNations, setSortNations] = useState("gold");
+
+// ** 국가리스트 정렬 관리 **
+  const [sortOption , setSortOption] = useState("gold");
   
 
-  // ** 입력값 설정 **
+// ** 입력값 설정 **
   const handleInputChange = (e) => {
 
     const { id, value } = e.target;
@@ -30,13 +32,13 @@ function MedalForm()  {
     }
     
     // 계산된 속성 이름 (Computed Property Name) id 변수의 키값을 동적으로 가져옴
-    setData({ ...data, [id]: value });
+    setData({ ...data, [id]: id === 'nation' ? value : Number(value)});
     
   }
 
 
 
-  // ** 국가추가 핸들러 **
+// ** 국가추가 핸들러 **
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -48,12 +50,10 @@ function MedalForm()  {
 
     // 정렬
     const sortedNations = [...nations, data].sort((a, b) => {
-      if(sortNations === 'gold') {
         return b.gold - a.gold;
-      } else {
-        return (b.gold + b.silver + b.bronze) - (a.gold + a.silver + a.bronze);
-      }
-    });
+      }) 
+
+    
     setNations(sortedNations);
 
     //로컬스토리지 저장
@@ -69,7 +69,7 @@ function MedalForm()  {
   }
 
 
-  // ** 업데이트 핸들러**  nations 배열을 활용
+// ** 업데이트 핸들러**  nations 배열을 활용
   const handleUpdate = (e) => {
     e.preventDefault();
 
@@ -104,8 +104,21 @@ function MedalForm()  {
     });
   }
 
+// ** 정렬 옵션 핸들러 **
   const handleSort = (e) => {
-    setSortNations(e.target.value);
+    const selectedOption = e.target.value;
+    setSortOption(selectedOption);
+
+    const sortedNations = [...nations].sort((a, b) => {
+      if(selectedOption === 'gold') {
+        return b.gold - a.gold;
+      } else {
+        return (b.gold + b.silver + b.bronze) - (a.gold + a.silver + a.bronze);
+      }
+    })
+
+    setNations(sortedNations);
+    console.log(sortedNations);
   }
 
   return (
@@ -118,11 +131,11 @@ function MedalForm()  {
         {/* 정렬 기준 섹션 */}
         <div className='sort-option'>
             <label>
-              <input type="radio" value="gold" onChange={handleSort} checked={sortNations === 'gold'}/>
+              <input type="radio" value="gold" onChange={handleSort} checked={sortOption === 'gold'}/>
               금메달 기준 정렬
             </label>
             <label>
-              <input type="radio" value="total" onChange={handleSort} checked={sortNations === 'total'}/>
+              <input type="radio" value="total" onChange={handleSort} checked={sortOption === 'total'}/>
               총 메달 기준 정렬
             </label>
           </div>
