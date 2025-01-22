@@ -57,7 +57,6 @@ function MedalForm()  {
           bronze: data.bronze,
         };
       }
-      alert("수정할 국가가 없습니다");
       return item;
     })
     setNations(updatedNations);
@@ -102,7 +101,7 @@ function MedalForm()  {
             <input type="submit" id='updatebtn' value="업데이트" onClick={handleUpdate}/>
           </div>
         </form>
-        <MedalList nations={nations} />
+        <MedalList nations={nations} setNations={setNations} />
         </div>
 
     </>

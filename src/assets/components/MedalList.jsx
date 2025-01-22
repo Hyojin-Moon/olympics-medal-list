@@ -1,12 +1,14 @@
 /* eslint-disable react/prop-types */
 import "../../App.css";
 
-function MedalList({nations}) {
+function MedalList({nations, setNations}) {
 
   // ** 삭제 핸들러 **
-  const handleDelete = () => {
-    
-  }
+  const handleDelete = (index) => {
+    // 인덱스를 기준으로 nations 배열에서 항목 삭제
+    const deletedNations = nations.filter((_, i) => i !== index);
+    setNations(deletedNations); // 상태 업데이트
+  };
 
   return (
     <div>
@@ -29,7 +31,7 @@ function MedalList({nations}) {
                   <p>{nation.gold}</p>
                   <p>{nation.silver}</p>
                   <p>{nation.bronze}</p>
-                  <button id='deletebtn' onClick={handleDelete}>삭제</button>
+                  <button id='deletebtn' onClick={() => handleDelete(index)}>삭제</button>
                 </div>
               ))}
             </>
