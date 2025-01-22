@@ -14,6 +14,7 @@ function App() {
 
 
   const handleInputChange = (e) => {
+
     const { id, value } = e.target;
     //메달 input은 0이상의 숫자만 허용
     if ((id === 'gold' || id === 'silver' || id === 'bronze') && (isNaN(value) || value < 0)) {
@@ -23,12 +24,13 @@ function App() {
     setData({ ...data, [id]: value });
   }
 
-  //onClick 이벤트 핸들러를 설정
+  //이벤트 핸들러를 설정
   const handleSubmit = (e) => {
     e.preventDefault();
 
     setNations([...nations, data]) //추가될 리스트 
 
+    //초기화
     setData({
       nation: '',
       gold: '',
@@ -36,7 +38,6 @@ function App() {
       bronze: '',
     });
   }
-  console.log(nations);
   return (
     <>
       <div className='main-container'>
@@ -69,6 +70,7 @@ function App() {
           </div>
 
         </form>
+
         {/* 국가리스트 추가 */}
         <div className='nations-list'>
           {nations.length > 0 && (
@@ -91,7 +93,7 @@ function App() {
               ))}
             </>
           )}
-          {nations.length === 0 && <p>현재 추가된 국가가 없습니다.</p>}
+          {nations.length === 0 && <h4>현재 추가된 국가가 없습니다.</h4>}
         </div>
       </div>
     </>

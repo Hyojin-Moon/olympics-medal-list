@@ -55,6 +55,38 @@
 }
 
 /* 국가리스트 */
+.nations-list {
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+}
+
+.nations-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  background-color: rgb(28, 0, 189);
+  color: white;
+  padding: 10px 15px;
+  font-weight: bold;
+  text-align: center;
+  
+}
+
+.nations-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding: 10px 15px;
+  border-top: 1px solid #ddd;
+  text-align: center;
+}
+
+/* 빈 데이터 메세지 */
+.nations-list h4 {
+  text-align: center;
+  font-size: 16px;
+  padding: 20px;
+}
+
 
 /* 버튼섹션 */
 .button-section{
