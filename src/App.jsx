@@ -81,6 +81,7 @@ function App() {
                 <p>금메달</p>
                 <p>은메달</p>
                 <p>동메달</p>
+                <p>액션</p>
               </div>
               {/* 리스트 */}
               {nations.map((nation, index) => (
@@ -89,6 +90,7 @@ function App() {
                   <p>{nation.gold}</p>
                   <p>{nation.silver}</p>
                   <p>{nation.bronze}</p>
+                  <button id='deletebtn'>삭제</button>
                 </div>
               ))}
             </>
