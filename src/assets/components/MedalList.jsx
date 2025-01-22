@@ -8,6 +8,9 @@ function MedalList({nations, setNations}) {
     // 인덱스를 기준으로 nations 배열에서 항목 삭제
     const deletedNations = nations.filter((_, i) => i !== index);
     setNations(deletedNations); // 상태 업데이트
+
+    //로컬스토리지 저장
+    localStorage.setItem('nations', JSON.stringify(deletedNations));
   };
 
   return (
