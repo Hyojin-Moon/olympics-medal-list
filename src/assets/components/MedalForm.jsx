@@ -28,6 +28,11 @@ function MedalForm()  {
 
     const { id, value } = e.target;
     
+    //국가 이름 공백 체크
+    if (id === 'nation' && value.trim() === "") {
+      return;
+    }
+
     //메달 input은 0이상의 숫자만 허용
     if ((id === 'gold' || id === 'silver' || id === 'bronze') && (isNaN(value) || value < 0)) {
       return;
@@ -43,6 +48,13 @@ function MedalForm()  {
 // ** 국가추가 핸들러 **
   const handleSubmit = (e) => {
     e.preventDefault();
+
+
+    // 국가 이름 공백 체크
+    if (data.nation.trim() === "") {
+      alert("국가 이름은 공백일 수 없습니다.");
+      return;
+    }
 
     // 중복 체크
     if(nations.some((e) => e.nation === data.nation)) {
@@ -74,6 +86,13 @@ function MedalForm()  {
 // ** 업데이트 핸들러**  nations 배열을 활용
   const handleUpdate = (e) => {
     e.preventDefault();
+
+
+    // 국가 이름 공백 체크
+    if (data.nation.trim() === "") {
+      alert("국가 이름은 공백일 수 없습니다.");
+      return;
+    }
 
     // 중복 체크
     if(!nations.some((e) => e.nation === data.nation)) {
