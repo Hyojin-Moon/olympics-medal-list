@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import "../../App.css";
+import MedalItem from "./MedalItem";
 
 function MedalList({nations, setNations}) {
 
@@ -15,7 +16,7 @@ function MedalList({nations, setNations}) {
 
   return (
     <div>
-      {/* 국가리스트 추가 */}
+      {/* 국가리스트 */}
       <div className='nations-list'>
           {nations.length > 0 && (
             <>
@@ -28,16 +29,14 @@ function MedalList({nations, setNations}) {
                 <p>총합계</p>
                 <p>액션</p>
               </div>
-              {/* 리스트 */}
+              {/* 리스트아이템 */}
               {nations.map((nation, index) => (
-                <div key={index} className='nations-item'>
-                  <p>{nation.nation}</p>
-                  <p id="goldmedal">{nation.gold}</p>
-                  <p>{nation.silver}</p>
-                  <p>{nation.bronze}</p>
-                  <p id="totalmedal">{nation.gold + nation.silver + nation.bronze}</p>
-                  <button id='deletebtn' onClick={() => handleDelete(index)}>삭제</button>
-                </div>
+                <MedalItem 
+                key={index} 
+                nation={nation} 
+                handleDelete={handleDelete}
+                index={index}
+                />
               ))}
             </>
           )}
