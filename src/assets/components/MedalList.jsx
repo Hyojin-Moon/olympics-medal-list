@@ -32,7 +32,7 @@ function MedalList({nations, setNations}) {
               {nations.map((nation, index) => (
                 <div key={index} className='nations-item'>
                   <p>{nation.nation}</p>
-                  <p>{nation.gold}</p>
+                  <p id="goldmedal">{nation.gold}</p>
                   <p>{nation.silver}</p>
                   <p>{nation.bronze}</p>
                   <p id="totalmedal">{nation.gold + nation.silver + nation.bronze}</p>

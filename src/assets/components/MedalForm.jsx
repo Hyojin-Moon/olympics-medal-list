@@ -15,6 +15,7 @@ function MedalForm()  {
     silver: 0,
     bronze: 0,
   });
+  
 // ** 국가리스트 상태 관리 **
   const [nations, setNations] = useState(savedData);
 
