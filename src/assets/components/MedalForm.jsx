@@ -29,7 +29,7 @@ function MedalForm()  {
     const { id, value } = e.target;
     
     //국가 이름 공백 체크
-    if (id === 'nation' && value.trim() === "") {
+    if (id === 'nation' && value.trim() === " ") {
       return;
     }
 
