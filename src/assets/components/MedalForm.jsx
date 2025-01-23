@@ -27,6 +27,7 @@ function MedalForm()  {
   const handleInputChange = (e) => {
 
     const { id, value } = e.target;
+    
     //메달 input은 0이상의 숫자만 허용
     if ((id === 'gold' || id === 'silver' || id === 'bronze') && (isNaN(value) || value < 0)) {
       return;
@@ -119,7 +120,6 @@ function MedalForm()  {
     })
 
     setNations(sortedNations);
-    console.log(sortedNations);
   }
 
   return (
@@ -163,7 +163,7 @@ function MedalForm()  {
           {/* 버튼 섹션 */}
           <div className='button-section'>
             <input type='submit' id='addbtn' value="국가 추가" onClick={handleSubmit}/>
-            <input type="submit" id='updatebtn' value="업데이트" onClick={handleUpdate}/>
+            <input type="button" id='updatebtn' value="업데이트" onClick={handleUpdate}/>
           </div>
         </form>
         <MedalList nations={nations} setNations={setNations} />
