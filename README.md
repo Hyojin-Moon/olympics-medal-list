@@ -69,11 +69,15 @@
 ┣ 📂 assets  
 ┃ ┗ 📄 01.gif, 02.gif - 시연용 GIF  
 ┣ 📂 components  
-┃ ┣ 📄 MedalForm.js - 국가 데이터 추가 및 정렬 기능 컴포넌트  
-┃ ┗ 📄 NationList.js - 국가 리스트 렌더링 컴포넌트  
+┃ ┣ 📄 MedalForm.jsx  
+┃ ┗ 📄 InputSection.jsx 
+┃ ┗ 📄 ButtonSection.jsx
+┃ ┗ 📄 SortOptions.jsx
+┃ ┗ 📄 MedalList.jsx 
+┃ ┗ 📄 MedalItem.jsx 
 ┣ 📂 styles  
 ┃ ┗ 📄 styles.css 
-┣ 📄 App.js - 메인 앱 컴포넌트
+┣ 📄 App.jsx - 메인 앱 컴포넌트
 ┗ 📄 README.md - 프로젝트 설명  
 ```
 ---
