@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-function MedalItem({nation, handleDelete, index}) {
+function MedalItem({ nation, handleDelete, index }) {
   return (
     <div className='nations-item'>
       <p>{nation.nation}</p>

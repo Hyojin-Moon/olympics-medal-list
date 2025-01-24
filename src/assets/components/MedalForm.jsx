@@ -165,7 +165,6 @@ function MedalForm() {
         {/* 국가리스트 */}
         <MedalList nations={nations} setNations={setNations} />
       </div>
-
     </>
   )
 }
